@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
@@ -10,17 +11,35 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 
+// my containers
+import { HomeComponent } from './containers/home/home.component';
+import { SearchComponent } from './containers/search/search.component';
+import { MyClubsComponent } from './containers/my-clubs/my-clubs.component';
+
 // my components
-import { TileComponent } from './components/tile/tile.component';
+import { HeaderComponent } from './components/header/header.component';
+
+
+// my routes
+const appRoutes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'search', component: SearchComponent },
+  { path: 'my-clubs', component: MyClubsComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    TileComponent
+    HeaderComponent,
+    HomeComponent,
+    SearchComponent,
+    MyClubsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    // routes
+    RouterModule.forRoot(appRoutes),
     //angular material
     MatButtonModule,
     MatExpansionModule
