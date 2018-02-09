@@ -18,11 +18,12 @@ import { MyClubsComponent } from './containers/my-clubs/my-clubs.component';
 
 // my components
 import { HeaderComponent } from './components/header/header.component';
+import { TileEventComponent } from './components/tile-event/tile-event.component';
 
 
 // my routes
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'search', component: SearchComponent },
   { path: 'my-clubs', component: MyClubsComponent }
 ];
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     HomeComponent,
     SearchComponent,
-    MyClubsComponent
+    MyClubsComponent,
+    TileEventComponent
   ],
   imports: [
     BrowserModule,
