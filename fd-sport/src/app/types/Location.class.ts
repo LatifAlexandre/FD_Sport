@@ -17,6 +17,6 @@ export class Location {
     }
 
     public static fake(): Location {
-        return new Location('id', 'name', 0,0);
+        return new Location('id', 'location-name', 0,0);
     }
 }

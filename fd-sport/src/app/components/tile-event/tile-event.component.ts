@@ -5,25 +5,28 @@ import * as _ from "lodash";
 @Component({
   selector: 'app-tile-event',
   template:`
-  <mat-expansion-panel>
+  <mat-expansion-panel expanded="true">
 
-  <mat-expansion-panel-header>
+  <mat-expansion-panel-header collapsedHeight="80px" expandedHeight="80px" >
 
     <mat-panel-title>
-      This is the expansion title
+      <div class="title"> {{ event.name }} </div>
+      <div class="date-place">
+        le {{ event.date | date:'shortDate' }} à {{ event.location.name }}
+      </div>
     </mat-panel-title>
-
-    <mat-panel-description>
-
-      This is a summary of the content
-    
-    </mat-panel-description>
-
   </mat-expansion-panel-header>
+  
+  
+  <app-ticket-item *ngFor="let ticket of event.tickets"
+               [ticket]="ticket" >
+  </app-ticket-item>
 
-  <p>
-    This is the primary content of the panel.
-  </p>
+  <div class="products">
+      <app-product-item *ngFor="let product of event.products"
+                         [product]="product">
+      </app-product-item>
+  </div>
 
 </mat-expansion-panel>
 

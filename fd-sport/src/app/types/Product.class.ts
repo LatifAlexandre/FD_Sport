@@ -21,7 +21,13 @@ export class Product {
     }
 
     public static fake(): Product {
-        return new Product('id', 'name', Price.fake(), 10, 'description', 'url');
+        return new Product('id', 
+        'product name', 
+        Price.fake(), 
+        10, 
+        'description', 
+        'https://ol-boutique-cdn-2.azureedge.net/9258-large_default/maillot-ol-training-bleu-2017-18.jpg'
+        )
     } 
 
 }

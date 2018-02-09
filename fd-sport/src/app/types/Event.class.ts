@@ -14,19 +14,19 @@ export class Event {
     description: string;
 
     actors: Actor[];
-    productcs: Product[];
+    products: Product[];
     tickets: Ticket[];
 
     constructor(id: string, name: string, date: Date, 
         location: Location, description: string, actors: Actor[], 
-        productcs: Product[], tickets: Ticket[]) {
+        products: Product[], tickets: Ticket[]) {
             this.id = id;
             this.name = name;
             this.date = date;
             this.location = location;
             this.description = description;
             this.actors = actors;
-            this.productcs = productcs;
+            this.products = products;
             this.tickets = tickets;
 
     }
@@ -40,7 +40,7 @@ export class Event {
             'description of the event', 
             _.times(2, _.constant(Club.fake())),  
             _.times(5, _.constant(Product.fake())), 
-            _.times(5, _.constant(Ticket.fake()))
+            _.times(2, _.constant(Ticket.fake()))
         ) 
     }
 }

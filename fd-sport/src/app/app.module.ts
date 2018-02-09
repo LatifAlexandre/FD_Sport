@@ -10,6 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // angular material
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
 
 // my containers
 import { HomeComponent } from './containers/home/home.component';
@@ -19,6 +20,8 @@ import { MyClubsComponent } from './containers/my-clubs/my-clubs.component';
 // my components
 import { HeaderComponent } from './components/header/header.component';
 import { TileEventComponent } from './components/tile-event/tile-event.component';
+import { TicketItemComponent } from './components/ticket-item/ticket-item.component';
+import { ProductItemComponent } from './components/product-item/product-item.component';
 
 
 // my routes
@@ -35,7 +38,9 @@ const appRoutes: Routes = [
     HomeComponent,
     SearchComponent,
     MyClubsComponent,
-    TileEventComponent
+    TileEventComponent,
+    TicketItemComponent,
+    ProductItemComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     //angular material
     MatButtonModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

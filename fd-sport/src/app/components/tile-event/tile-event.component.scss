@@ -1,0 +1,11 @@
+:host {
+    mat-panel-title {
+        display: flex;
+        flex-direction: column;
+
+        .title {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    }
+}
