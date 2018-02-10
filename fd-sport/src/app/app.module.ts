@@ -14,6 +14,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon'
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
 //exeternal modules
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
@@ -66,6 +68,8 @@ const appRoutes: Routes = [
     MatExpansionModule,
     MatCardModule,
     MatIconModule,
+    MatToolbarModule,
+    MatSidenavModule,
     // exeternal modules
     Ng2CarouselamosModule
   ],
