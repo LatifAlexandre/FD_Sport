@@ -14,21 +14,18 @@ export class Event {
     description: string;
 
     actors: Actor[];
-    products: Product[];
-    ticket: Ticket;
+    tickets: Ticket[];
 
     constructor(id: string, name: string, date: Date, 
         location: Location, description: string, actors: Actor[], 
-        products: Product[], ticket: Ticket) {
+        products: Product[], tickets: Ticket[]) {
             this.id = id;
             this.name = name;
             this.date = date;
             this.location = location;
             this.description = description;
             this.actors = actors;
-            this.products = products;
-            this.ticket = ticket;
-
+            this.tickets = tickets;
     }
 
     public static fake(): Event {
@@ -40,7 +37,7 @@ export class Event {
             'description of the event', 
             _.times(2, _.constant(Club.fake())),  
             _.times(5, _.constant(Product.fake())), 
-            Ticket.fake()
+            _.times(2, _.constant(Ticket.fake()))
         ) 
     }
 }

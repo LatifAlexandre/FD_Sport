@@ -18,10 +18,12 @@ import * as _ from "lodash";
   </mat-expansion-panel-header>
   
   <div class="panel-body">
-    <app-ticket-item [ticket]="event.ticket" >
+    <app-ticket-item  *ngFor="let ticket of event.tickets"
+                      [ticket]="ticket" >
     </app-ticket-item>
-  
-    <app-product-item-list [products]="event.products"
+
+    <app-product-item-list *ngFor="let actor of event.actors"
+                           [products]="actor.products"
                            [width]="300">
     </app-product-item-list>
 
