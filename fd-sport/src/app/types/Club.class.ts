@@ -8,9 +8,7 @@ export class Club extends Actor {
     favorite: boolean;
 
     constructor(id, name, products, location, favorite, events?) {
-        console.log(events)
-            super(id, name, products, events);
-
+        super(id, name, products, events);
         this.location = location;
         this.favorite = favorite;
     }

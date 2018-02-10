@@ -20,7 +20,6 @@ export class TicketItemComponent implements OnInit {
   @Input() ticket: Ticket;
 
   constructor() {
-    console.log(this.ticket)
   }
 
   ngOnInit() {

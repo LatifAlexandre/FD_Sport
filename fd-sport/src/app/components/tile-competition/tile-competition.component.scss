@@ -1,0 +1,26 @@
+:host {
+    
+        margin: 10px;
+    
+        mat-panel-title {
+            display: flex;
+            flex-direction: column;
+    
+            .title {
+                font-weight: bold;
+                font-size: 1.2em;
+            }
+        }
+    
+        .panel-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .more-info-btn {
+    
+            width: 60%;
+            margin: 20px;
+        }
+    }

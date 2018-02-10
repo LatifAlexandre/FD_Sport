@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Event } from '../../types/Event.class';
 import * as _ from "lodash";
 
@@ -17,15 +17,18 @@ import * as _ from "lodash";
     </mat-panel-title>
   </mat-expansion-panel-header>
   
+  <div class="panel-body">
+    <app-ticket-item [ticket]="event.ticket" >
+    </app-ticket-item>
   
-  <app-ticket-item *ngFor="let ticket of event.tickets"
-               [ticket]="ticket" >
-  </app-ticket-item>
+    <app-product-item-list [products]="event.products"
+                           [width]="300">
+    </app-product-item-list>
 
-  <div class="products">
-      <app-product-item *ngFor="let product of event.products"
-                         [product]="product">
-      </app-product-item>
+    <button mat-raised-button color="primary" class="more-info-btn">
+      Voir l'évenement  
+    </button>
+
   </div>
 
 </mat-expansion-panel>
@@ -35,10 +38,9 @@ import * as _ from "lodash";
 })
 export class TileEventComponent implements OnInit {
 
-  event: Event = Event.fake();
+  @Input() event: Event;
 
   constructor() {
-    console.log(this.event)
   }
 
   ngOnInit() {

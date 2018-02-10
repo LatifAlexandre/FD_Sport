@@ -1,13 +1,14 @@
 :host {
 
     margin: 10px;
-
+    
     mat-panel-title {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
 
-        .favorite-icon {
-            color: red;
+        .favorite-btn {
+            color: rgb(190, 190, 7);
         }
 
         .title {
