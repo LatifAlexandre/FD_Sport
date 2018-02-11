@@ -1,0 +1,53 @@
+:host {
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        
+        .picture-and-price{
+            display: flex;
+            flex-direction: row;
+            
+            img {
+                width: 50%;
+                height: 50%;
+            }
+    
+            .right {
+    
+                
+                .prices{
+                    display: flex;
+    
+                    .initial-price {
+                        margin: 5px;
+                        color: red;
+                        font-size: 1.3em;
+                        text-decoration: line-through;
+                    }
+        
+                    .price {
+                        margin: 5px;
+                        font-size: 1.5em;
+                        font-weight: bold;
+                        color: green;
+                    }
+                }
+    
+            }
+            
+        }
+    
+        .messages {
+            margin: 25px 0;
+            font-weight: bold;
+            text-align: center;
+        }
+    
+        .buy-btn {
+            width: 80%;
+            color: white;
+            background-color: green;
+        }
+    }

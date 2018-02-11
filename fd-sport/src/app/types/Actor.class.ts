@@ -25,7 +25,7 @@ export class Actor {
         return new Actor(
             'id-actor', 
             'actor-name', 
-             _.times(5, _.constant(Product.fake())),
+             _.times(5, _.constant(Product.fake(false))),
              'https://pbs.twimg.com/profile_images/883733518920146944/5_8m_2MK.jpg'
 
         )

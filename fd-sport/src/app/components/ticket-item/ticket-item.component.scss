@@ -1,13 +1,42 @@
-:host{
+.ticket{
     display: flex;
 
-    
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+
     
     max-width: 100%;
     
     border: 1px solid silver;
     padding: 5px;
     margin: 5px 0px;
+
+    .ticket-icon {
+        font-size: 2em;
+        color: rgb(255, 138, 138);
+    }
+
+    .infos {
+
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+
+        margin: 0 10px;
+
+        .name {
+            font-weight: bold;
+        }
+
+        .price {
+            font-weight: bold;
+            color: green;
+        }
+
+    }
+
+    .btn-eye {
+        color: silver;
+    }
 }

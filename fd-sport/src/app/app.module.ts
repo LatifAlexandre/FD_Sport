@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
+
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -48,6 +50,7 @@ import { EventPageComponent } from './containers/event-page/event-page.component
 import { CompetitionPageComponent } from './containers/competition-page/competition-page.component';
 import { ClubPageComponent } from './containers/club-page/club-page.component';
 import { TicketItemListComponent } from './components/ticket-item-list/ticket-item-list.component';
+import { MapComponent } from './components/map/map.component';
 
 
 
@@ -91,6 +94,7 @@ const appRoutes: Routes = [
     SidenavMenuComponent,
     TileGoodDealsComponent,
     TicketItemListComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
@@ -112,7 +116,7 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     // exeternal modules
-    Ng2CarouselamosModule
+    Ng2CarouselamosModule,
   ],
   providers: [ SandboxService ],
   bootstrap: [AppComponent]

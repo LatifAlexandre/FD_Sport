@@ -4,15 +4,29 @@ import { Ticket } from '../../types/Ticket.class';
 @Component({
   selector: 'app-ticket-item',
   template: `
-    
-    <div class="left">
-      {{ ticket.event.name }} <br>
-      {{ ticket.stock }} places restantes 
-      à partir de {{ ticket.price.initialPrice }} €
+
+  <div class="ticket" [routerLink]="['/ticket', ticket.id]">
+  
+  <i class="material-icons">bookmark_border</i>
+  
+  <div class="infos">
+    <div class="name">
+    {{ ticket.event.name }}
     </div>
-    <button mat-raised-button color="warn" [routerLink]="['/ticket', ticket.id]">
-     Acheter  
-    </button>
+    <div>
+    plus que {{ ticket.stock }} places <br>
+    à partir de <span class="price"> {{ ticket.price.initialPrice }} € </span>
+    </div>
+   
+  </div>
+
+  <button mat-icon-button class="btn-eye">
+    <i class="material-icons">remove_red_eye</i>
+  </button>
+
+  </div>
+    
+    
     
   `,
   styleUrls: ['./ticket-item.component.scss']
@@ -26,7 +40,6 @@ export class TicketItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.ticket)
   }
 
 }

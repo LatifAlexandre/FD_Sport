@@ -9,7 +9,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
       <i class="material-icons">menu</i>
     </button>
     
-    <span routerLink="/"> FD Sport </span>
+    <span class="logo" routerLink="/"> 
+      <i class="material-icons">explore</i>
+      FD Sport 
+    </span>
 
     <button mat-icon-button  routerLink="/search">
       <i class="material-icons">search</i>

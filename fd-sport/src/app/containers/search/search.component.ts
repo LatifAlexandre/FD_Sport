@@ -53,13 +53,7 @@ import { Component, OnInit } from '@angular/core';
       <!-- lieu -->
 
       <label> A proximité de : </label>
-      <iframe class="map"
-        height="300"
-        width="100%"
-        frameborder="0" style="border:0"
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBErQrtVUDeCDkFJtS03FBawy0raDrre98
-          &q=france">
-      </iframe>
+      
       
     </div>
 
@@ -68,9 +62,9 @@ import { Component, OnInit } from '@angular/core';
     <div class="form-footer">
       <button class="search-btn" mat-raised-button color="primary"> Rechercher </button>
     </div>
-    
-    
 
+    <app-map [keywords]="'france'">
+    </app-map>
   `,
   styleUrls: ['./search.component.scss']
 })

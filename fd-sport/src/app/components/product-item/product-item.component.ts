@@ -22,7 +22,7 @@ import { Product } from '../../types/Product.class';
       </div>
     </div>
     <img [src]="product.pictureLink">
-    
+
   </div>
   `,
   styleUrls: ['./product-item.component.scss']

@@ -44,7 +44,6 @@ export class TileClubComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.club)
   }
 
 }

@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.event = this.sb.getEvent();
-    this.club = this.sb.getClub();
+    this.club = this.sb.getClub('fake-id');
     this.competition = this.sb.getCompetition();
     this.goodDeals = this.sb.getGoodDeals();
   }

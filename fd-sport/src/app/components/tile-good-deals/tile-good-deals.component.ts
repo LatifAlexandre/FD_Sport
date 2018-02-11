@@ -26,7 +26,7 @@ import {} from './../../../../res/'
         </app-product-item-list>
   
         <button mat-raised-button color="primary" class="more-info-btn" routerLink="/good-deals">
-         Voir toute les bonnes affaires
+         Bonnes affaires
         </button>
       </div>
   

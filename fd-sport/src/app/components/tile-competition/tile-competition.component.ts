@@ -45,7 +45,6 @@ export class TileCompetitionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.competition)
   }
 
 }
