@@ -5,31 +5,25 @@ import { Product } from '../../types/Product.class';
   selector: 'app-product-item',
   template:`
 
-  <div class="left">
-    <div class="product-name">
-      {{ product.name}}  
+  <div class="product-item" [routerLink]="['/product', product.id]">
+
+    <div class="left">
+      <div class="product-name" >
+        {{ product.name}}  
+      </div>
+      
+      <div class="prices">
+        <div class="initial-price">
+          {{ product.price.initialPrice }} €
+        </div>
+        <div class="price">
+          {{ product.price.getReducedPrice() }} €
+        </div>
+      </div>
     </div>
-    
-    <div class="prices">
-
-    <div class="initial-price">
-      {{ product.price.initialPrice }} €
-    </div>
-
-    <div class="price">
-    {{ product.price.getReducedPrice() }} €
-    </div>
-   
-  </div>
-
-  </div>
-
-    
-
     <img [src]="product.pictureLink">
     
-    
-
+  </div>
   `,
   styleUrls: ['./product-item.component.scss']
 })

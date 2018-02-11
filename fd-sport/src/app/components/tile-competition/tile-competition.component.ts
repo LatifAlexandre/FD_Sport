@@ -7,21 +7,28 @@ import { Competition } from '../../types/Competition.class';
     <mat-expansion-panel expanded="true">
   
       <mat-expansion-panel-header collapsedHeight="80px" expandedHeight="80px" >
-        <mat-panel-title>
+      <mat-panel-title>
+        <div class="picture">
+          <img [src]="competition.pictureLink" alt="" class="header-picture">
+        </div>
+
+        <div class="info">
           <div class="title"> {{ competition.name }} </div>
           <div class="date">
             Du {{ competition.startDate | date:'shortDate' }} au {{ competition.endDate | date:'shortDate' }}.
           </div>
-        </mat-panel-title>
+        </div>
+      </mat-panel-title>
+
+        
       </mat-expansion-panel-header>
   
       <div class="panel-body">
     
-        <app-product-item-list [products]="competition.products"
-                             [width]="300">
+        <app-product-item-list [products]="competition.products">
         </app-product-item-list>
   
-        <button mat-raised-button color="primary" class="more-info-btn">
+        <button mat-raised-button color="primary" class="more-info-btn" [routerLink]="['/competition', competition.id]">
          Voir la compétition 
         </button>
       </div>

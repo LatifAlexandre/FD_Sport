@@ -20,7 +20,7 @@ import { Component, OnInit,Output, EventEmitter } from '@angular/core';
       </mat-list-item>
 
       <mat-list-item>
-        <a mat-button (click)="onLinkClick()"routerLink="."> 
+        <a mat-button (click)="onLinkClick()"routerLink="/good-deals"> 
           <i class="material-icons">monetization_on</i>
           Bonnes affaires 
         </a> 

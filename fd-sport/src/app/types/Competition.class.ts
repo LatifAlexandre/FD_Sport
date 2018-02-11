@@ -13,13 +13,16 @@ export class Competition {
     products: Product[];
     events: Event[];
 
-    constructor(id, name, startDate, endDate, products, events) {
+    pictureLink: string;
+
+    constructor(id, name, startDate, endDate, products, events, pictureLink) {
         this.id = id;
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.products = products;
         this.events = events;
+        this.pictureLink = pictureLink;
     }
 
     public static fake(): Competition {
@@ -28,9 +31,9 @@ export class Competition {
             'competition-name', 
             new Date(), 
             new Date(), 
-            _.times(5,
-            _.constant(Product.fake())),  
-            _.times(5, _.constant(Event.fake()))
+            _.times(3,_.constant(Product.fake())),  
+            _.times(3, _.constant(Event.fake())),
+            'https://upload.wikimedia.org/wikipedia/fr/f/f7/FIFA_World_Cup_2018_Logo.png'
         )
     }
 }

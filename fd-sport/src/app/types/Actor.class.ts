@@ -10,19 +10,25 @@ export class Actor {
     products: Product[];
     events?: Event[];
 
-    constructor(id, name, products, events?) {
-        this.id = id
-        this.name = name
-        this.products = products
+    pictureLink: string;
+
+    constructor(id, name, products, pictureLink, events?) {
+        this.id = id;
+        this.name = name;
+        this.products = products;
+        this.pictureLink = pictureLink;
         if (events)
             this.events = events
     }
     
     public static fake(): Actor {
-        return new Actor('id-actor', 
-                        'actor-name', 
-                        _.times(5, _.constant(Product.fake()))
-                    )
+        return new Actor(
+            'id-actor', 
+            'actor-name', 
+             _.times(5, _.constant(Product.fake())),
+             'https://pbs.twimg.com/profile_images/883733518920146944/5_8m_2MK.jpg'
+
+        )
     }
     
 }

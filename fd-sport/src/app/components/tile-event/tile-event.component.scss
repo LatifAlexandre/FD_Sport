@@ -5,15 +5,19 @@
 
     mat-panel-title {
         display: flex;
-        flex-direction: column;
-
-        .favorite-icon {
-            color: red;
+        flex-direction: row;
+        .header-picture{
+            width: 50px;
+            height: 90%;
+            margin: 0 10px;
         }
-
-        .title {
-            font-weight: bold;
-            font-size: 1.2em;
+        .info {
+            display: flex;
+            flex-direction: column;
+            .title {
+                font-weight: bold;
+                font-size: 1.2em;
+            }
         }
     }
 

@@ -10,24 +10,25 @@ import { Club } from '../../types/Club.class';
       <mat-panel-title>
         
       <button mat-icon-button color="accent">
-      <i *ngIf="!club.favorite"
-            class="material-icons favorite-btn">star_border
-      </i>
-      <i *ngIf="club.favorite" 
-            class="material-icons favorite-btn">star</i>
+        <i *ngIf="!club.favorite" class="material-icons favorite-btn">star_border </i>
+        <i *ngIf="club.favorite" class="material-icons favorite-btn">star</i>
       </button>
-        
-        <div class="title"> {{ club.name }} </div>
+
+      <div class="picture">
+        <img [src]="club.pictureLink" alt="" class="header-picture">
+      </div>
+      
+      <div class="title"> {{ club.name }} </div>
       </mat-panel-title>
+
     </mat-expansion-panel-header>
 
     <div class="panel-body">
   
-      <app-product-item-list [products]="club.products"
-                           [width]="300">
+      <app-product-item-list [products]="club.products">
       </app-product-item-list>
 
-      <button mat-raised-button color="primary" class="more-info-btn">
+      <button mat-raised-button color="primary" class="more-info-btn" [routerLink]="['/club', club.id]">
        Voir le Club 
       </button>
     </div>

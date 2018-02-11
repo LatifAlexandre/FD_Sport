@@ -5,6 +5,7 @@ import { Product } from '../../types/Product.class';
   selector: 'app-product-item-list',
   template:`
 
+    <!--
     <div
       ng2-carouselamos
       class="slides-wrapper"
@@ -27,19 +28,18 @@ import { Product } from '../../types/Product.class';
       <app-product-item [product]="item">
       </app-product-item>
     </ng-template>
+    -->
 
-    <!--
     <app-product-item *ngFor="let product of products"
                        [product]="product">
     </app-product-item>
-    -->
   `,
   styleUrls: ['./product-item-list.component.scss']
 })
 export class ProductItemListComponent implements OnInit {
 
   @Input() products: Product[];
-  @Input() width: number;
+  //@Input() width: number;
 
   constructor() {
     

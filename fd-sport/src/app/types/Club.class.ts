@@ -7,8 +7,8 @@ export class Club extends Actor {
     location: Location;
     favorite: boolean;
 
-    constructor(id, name, products, location, favorite, events?) {
-        super(id, name, products, events);
+    constructor(id, name, products, pictureLink, location, favorite,  events?) {
+        super(id, name, products, pictureLink, events);
         this.location = location;
         this.favorite = favorite;
     }
@@ -17,7 +17,8 @@ export class Club extends Actor {
         return new Club(
             'id-club',  
             'club-name', 
-            _.times(5, _.constant(Product.fake())), 
+            _.times(1, _.constant(Product.fake())),
+            'https://pbs.twimg.com/profile_images/883733518920146944/5_8m_2MK.jpg',
             Location.fake(), 
             true
         )
