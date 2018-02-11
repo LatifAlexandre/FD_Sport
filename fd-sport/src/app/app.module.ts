@@ -10,12 +10,20 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 // angular material
+import {MatNativeDateModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon'
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 //exeternal modules
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
@@ -35,6 +43,7 @@ import { ProductItemListComponent } from './components/product-item-list/product
 import { SandboxService } from './services/sandbox.service';
 import { TileClubComponent } from './components/tile-club/tile-club.component';
 import { TileCompetitionComponent } from './components/tile-competition/tile-competition.component';
+import { SidenavMenuComponent } from './components/sidenav-menu/sidenav-menu.component';
 
 
 // my routes
@@ -56,7 +65,8 @@ const appRoutes: Routes = [
     ProductItemComponent,
     ProductItemListComponent,
     TileClubComponent,
-    TileCompetitionComponent
+    TileCompetitionComponent,
+    SidenavMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +80,13 @@ const appRoutes: Routes = [
     MatIconModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatListModule,
+    MatDividerModule,
+    MatInputModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     // exeternal modules
     Ng2CarouselamosModule
   ],

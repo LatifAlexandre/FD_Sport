@@ -1,0 +1,35 @@
+$footer-height: 50px;
+
+:host {
+
+    .form-body {
+        padding-bottom: $footer-height;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+
+        .map {
+            box-shadow: 0px 0px 5px silver;
+            margin: 20px 0;
+        }
+    }
+
+    .form-footer{
+        box-shadow: 0px 0px 5px grey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: white;
+        width: 100%;
+        height: $footer-height;
+        position: fixed;
+        bottom: 0px;
+        text-align: center;
+
+        .search-btn {
+            width: 50%;
+        }
+    }
+   
+}

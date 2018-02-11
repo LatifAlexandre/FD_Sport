@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   template: `
   <mat-toolbar>
     
-    <button mat-icon-button>
+    <button mat-icon-button (click)="onMenuBtn()">
       <i class="material-icons">menu</i>
     </button>
     
-    <span> FD Sport </span>
+    <span routerLink="/"> FD Sport </span>
 
-    <button mat-icon-button>
+    <button mat-icon-button  routerLink="/search">
       <i class="material-icons">search</i>
     </button>
 
@@ -21,9 +21,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output() clickOnMenuBtn: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onMenuBtn() {
+    this.clickOnMenuBtn.emit();
   }
 
 }
