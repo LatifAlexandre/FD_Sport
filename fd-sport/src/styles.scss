@@ -2,7 +2,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Kalam');
-
+@import 'styles-variable.scss';
 
 body, html {
     margin: 0px;
@@ -25,7 +25,7 @@ body, html {
 * Comme la dite marge est exprimée en pourcentage,
 * on l'augmente sur les devices moins larges.
 */
-@media only screen and (min-width: 993px){
+@media only screen and (min-width: $break-point){
     .container {
         width: 85%;
     }

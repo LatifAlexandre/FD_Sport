@@ -9,11 +9,21 @@ import { SandboxService } from '../../services/sandbox.service';
 @Component({
   selector: 'app-home',
   template:`
-    <div *ngFor="let column of columns"
-          [style.width.px]="columnWidth">
-      <app-tile-list [tiles]="column">
-      </app-tile-list>
+    <div class="welcome">
+      <h2>
+        Bienvenue sur FD sports  
+      </h2>
     </div>
+
+    <div class="columns">
+      <div *ngFor="let column of columns"
+          [style.width.px]="columnWidth">
+        <app-tile-list [tiles]="column">
+        </app-tile-list>
+      </div>
+    </div>
+    
+    
   `,
   styleUrls: ['./home.component.scss']
 })

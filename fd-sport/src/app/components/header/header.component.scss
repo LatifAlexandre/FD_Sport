@@ -1,3 +1,5 @@
+@import '../../../styles-variable.scss';
+
 :host {
 
     display: block;
@@ -27,13 +29,13 @@
                 }
             }
 
-            @media only screen and (max-device-width: 993px){
+            @media only screen and (max-device-width: $break-point){
                 .link-list, .search, .logo-left{
                     display: none;
                 }
             }
 
-            @media only screen and (min-device-width: 993px){
+            @media only screen and (min-device-width: $break-point){
                 .btn-menu, .btn-search, .logo-right {
                     display: none;
                 }
