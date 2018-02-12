@@ -5,15 +5,13 @@ import { Club } from '../types/Club.class';
 import { Competition } from '../types/Competition.class';
 import { GoodDeals } from '../types/GoodDeals.class';
 import { Ticket } from '../types/Ticket.class';
+import { Tile } from '../types/Tile.class';
 import * as _ from 'lodash';
 
 // class used to give datas
 @Injectable()
 export class SandboxService {
 
-  public getEvent() {
-    return Event.fake();
-  }
 
   public getClub(id: string) {
     return Club.fake();
@@ -23,9 +21,6 @@ export class SandboxService {
     return _.times(3, _.constant(Club.fake()));
   }
 
-  public getCompetition()  {
-    return Competition.fake();
-  }
 
   public getGoodDeals()  {
     return GoodDeals.fake();
@@ -39,16 +34,15 @@ export class SandboxService {
     return Ticket.fake();
   }
 
-  // get information related to an event from its id
-  // get information related to a product from its id
-  // get information related to a competition from its id
-  // get information related to a actor from its id
+  public getMostRelevantTiles(): Tile[] {
+    return [
+      new Tile(Competition.fake()),
+      //new Tile(Competition.fake()),
+      new Tile(Club.fake()),
+      new Tile(Event.fake()),
+      new Tile(GoodDeals.fake())
+    ]
+  }
 
-  // research ?
-
-  // return a set of n tiles according to :
-  //   - geolocalisation
-  
-  // return my favorite clubs
   
 }

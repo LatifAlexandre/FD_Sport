@@ -3,33 +3,59 @@
     display: block;
     position: fixed;
     z-index: 4;
-
     top: 0;
     left: 0;
-
     width: 100%;
 
     mat-toolbar {
         display: flex;
-        justify-content: space-between;
-
         background-color: #4484CE;
         color: white;
         box-shadow: 0px 0px 5px silver;
 
-        .logo {
+        .container {
 
             display: flex;
+            justify-content: space-between;
 
-            font-family: 'Kalam', cursive;
-            font-weight: bold;
-
-            i {
-                margin-right: 10px;
+            .logo {
+                display: flex;
+                font-family: 'Kalam', cursive;
+                font-weight: bold;
+                i {
+                    margin-right: 10px;
+                }
             }
 
-            
+            @media only screen and (max-device-width: 993px){
+                .link-list, .search, .logo-left{
+                    display: none;
+                }
+            }
+
+            @media only screen and (min-device-width: 993px){
+                .btn-menu, .btn-search, .logo-right {
+                    display: none;
+                }
+
+                .link-list{
+                }
+
+                .search{
+                    display: flex;
+                    justify-content: flex-end;
+                    height: 30px;
+
+                    .search-field {
+                        max-width: 300px;
+                    }
+                }
+            }
         }
+
+        
     }
+
+
 }
 

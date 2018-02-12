@@ -3,7 +3,30 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Kalam');
 
+
 body, html {
     margin: 0px;
     font-family: 'Roboto';
+    background-color: #FAFAFA;
+}
+
+.container {
+    /* On centre */
+    margin: 0 auto;
+
+    /* On limite la largeur pour les grands écrans */
+    max-width: 1280px;
+
+    /* On gère la présence d'une marge */
+    width: 95%;
+}
+
+/*
+* Comme la dite marge est exprimée en pourcentage,
+* on l'augmente sur les devices moins larges.
+*/
+@media only screen and (min-width: 993px){
+    .container {
+        width: 85%;
+    }
 }

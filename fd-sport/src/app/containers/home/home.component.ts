@@ -3,39 +3,35 @@ import { Event } from '../../types/Event.class';
 import { Club } from '../../types/Club.class';
 import { Competition } from '../../types/Competition.class';
 import { GoodDeals } from '../../types/GoodDeals.class';
+import { Tile } from '../../types/Tile.class';
 import { SandboxService } from '../../services/sandbox.service';
 
 @Component({
   selector: 'app-home',
   template:`
-    <app-tile-good-deals [goodDeals]="goodDeals">
-    </app-tile-good-deals>
-
-    <app-tile-competition [competition]="competition">
-    </app-tile-competition>
-
-    <app-tile-event [event]="event">
-    </app-tile-event>
-
-    <app-tile-club [club]="club">
-    </app-tile-club>
+    <div *ngFor="let column of columns"
+          [style.width.px]="columnWidth">
+      <app-tile-list [tiles]="column">
+      </app-tile-list>
+    </div>
   `,
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 
-  event: Event;
-  club: Club;
-  competition: Competition;
-  goodDeals: GoodDeals;
+  columns: Tile[][] = [];
+  columnNumber = 3;
+  columnWidth = 1280 / this.columnNumber;
 
-  constructor(private sb: SandboxService) { }
+  constructor(private sb: SandboxService) {
+    for (let i = 0; i < this.columnNumber; i++) {
+      this.columns.push(
+        this.sb.getMostRelevantTiles()
+      )
+    }
+  }
 
   ngOnInit() {
-    this.event = this.sb.getEvent();
-    this.club = this.sb.getClub('fake-id');
-    this.competition = this.sb.getCompetition();
-    this.goodDeals = this.sb.getGoodDeals();
   }
 
 }

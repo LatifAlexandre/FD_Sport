@@ -4,7 +4,6 @@ import { Component, OnInit,Output, EventEmitter } from '@angular/core';
   selector: 'app-sidenav-menu',
   template: `
     <mat-list>
-
       <mat-list-item> 
         <a mat-button (click)="onLinkClick()"routerLink="."> 
           <i class="material-icons">home</i>
@@ -39,7 +38,6 @@ import { Component, OnInit,Output, EventEmitter } from '@angular/core';
           Rechercher 
         </a> 
       </mat-list-item>
-
     </mat-list>
   `,
   styleUrls: ['./sidenav-menu.component.scss']

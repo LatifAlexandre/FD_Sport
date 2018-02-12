@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Club } from '../../types/Club.class';
+import { Tile } from '../../types/Tile.class';
 import { SandboxService } from '../../services/sandbox.service';
 
 @Component({
@@ -7,17 +8,21 @@ import { SandboxService } from '../../services/sandbox.service';
   template: `
     <h2> Mes clubs favoris </h2>
 
-    <app-tile-club *ngFor="let club of clubs" [club]="club">
-    </app-tile-club>
+    <app-tile-list [tiles]="tiles">
+    </app-tile-list>
   `,
   styleUrls: ['./my-clubs.component.scss']
 })
 export class MyClubsComponent implements OnInit {
 
-  clubs: Club[];
+  tiles: Tile[] = [];
 
   constructor(sb: SandboxService) {
-    this.clubs = sb.getMyClubs();
+    sb.getMyClubs().forEach( (club) => {
+      this.tiles.push(new Tile(club))
+    })
+
+    console.log(this.tiles)
   }
 
   ngOnInit() {

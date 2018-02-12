@@ -51,6 +51,8 @@ import { CompetitionPageComponent } from './containers/competition-page/competit
 import { ClubPageComponent } from './containers/club-page/club-page.component';
 import { TicketItemListComponent } from './components/ticket-item-list/ticket-item-list.component';
 import { MapComponent } from './components/map/map.component';
+import { TileComponent } from './components/tile/tile.component';
+import { TileListComponent } from './components/tile-list/tile-list.component';
 
 
 
@@ -95,6 +97,8 @@ const appRoutes: Routes = [
     TileGoodDealsComponent,
     TicketItemListComponent,
     MapComponent,
+    TileComponent,
+    TileListComponent,
   ],
   imports: [
     BrowserModule,

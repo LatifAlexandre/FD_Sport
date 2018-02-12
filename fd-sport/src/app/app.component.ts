@@ -15,7 +15,9 @@ import { HeaderComponent } from './components/header/header.component';
           </app-sidenav-menu>
         </mat-sidenav>
         <mat-sidenav-content >
-          <router-outlet></router-outlet>
+          <div class="container">
+            <router-outlet ></router-outlet>
+          </div>
         </mat-sidenav-content>
     
       </mat-sidenav-container>
