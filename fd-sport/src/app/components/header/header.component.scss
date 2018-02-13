@@ -11,7 +11,7 @@
 
     mat-toolbar {
         display: flex;
-        background-color: #4484CE;
+        background-color: $main-color;
         color: white;
         box-shadow: 0px 0px 5px silver;
 
@@ -20,7 +20,7 @@
             display: flex;
             justify-content: space-between;
 
-            .logo {
+            .logo-right, .logo-left {
                 display: flex;
                 font-family: 'Kalam', cursive;
                 font-weight: bold;

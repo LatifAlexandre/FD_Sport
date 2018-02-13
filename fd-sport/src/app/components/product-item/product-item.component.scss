@@ -1,3 +1,44 @@
+:host {
+    display: block;
+    box-shadow: 0px 0px 5px silver;
+    width: 100px;
+    height: 140px;
+    margin: 5px;
+    padding: 5px;
+
+    img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .prices-reduc {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .prices {
+            .initial-price {
+                color: red;
+                text-decoration: line-through;
+            }
+
+            .price {
+                color: green;
+                font-weight: bold;
+                font-size: 1.1em;
+            }
+        }
+
+        .reduc {
+            font-size: 1.4em;
+        }
+
+        .reduc {
+
+        }
+    }
+}
+
+/*
 :host{
 
     display: block;
@@ -36,4 +77,4 @@
             height: 60px;
         }
     }
-}
+}*/

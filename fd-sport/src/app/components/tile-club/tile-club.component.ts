@@ -28,9 +28,10 @@ import { Club } from '../../types/Club.class';
       <app-product-item-list [products]="club.products">
       </app-product-item-list>
 
-      <button mat-raised-button color="primary" class="more-info-btn" [routerLink]="['/club', club.id]">
-       Voir le Club 
-      </button>
+      <button mat-raised-button class="more-info-btn" [routerLink]="['/club', club.id]">
+      <i class="material-icons">find_in_page</i>
+      Voir le Club
+    </button>
     </div>
 
   </mat-expansion-panel >

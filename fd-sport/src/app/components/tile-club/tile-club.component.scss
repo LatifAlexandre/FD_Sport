@@ -1,3 +1,4 @@
+@import '../../../styles-variable.scss';
 :host {
 
     
@@ -16,7 +17,6 @@
         }
 
         .title {
-            font-weight: bold;
             font-size: 1.2em;
         }
     }
@@ -28,8 +28,8 @@
     }
 
     .more-info-btn {
-
-        width: 60%;
         margin: 20px;
+        background-color: $main-color;
+        color: white;
     }
 }

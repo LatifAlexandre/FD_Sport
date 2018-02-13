@@ -13,6 +13,7 @@ import { SandboxService } from '../../services/sandbox.service';
       <h2>
         Bienvenue sur FD sports  
       </h2>
+      <h3> Une sélection d'évènements sportifs et de produits dérivés </h3>
     </div>
 
     <div class="columns">

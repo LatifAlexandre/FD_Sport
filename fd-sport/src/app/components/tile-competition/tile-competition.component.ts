@@ -15,7 +15,7 @@ import { Competition } from '../../types/Competition.class';
         <div class="info">
           <div class="title"> {{ competition.name }} </div>
           <div class="date">
-            Du {{ competition.startDate | date:'shortDate' }} au {{ competition.endDate | date:'shortDate' }}.
+            du {{ competition.startDate | date:'shortDate' }} au {{ competition.endDate | date:'shortDate' }}.
           </div>
         </div>
       </mat-panel-title>
@@ -28,8 +28,9 @@ import { Competition } from '../../types/Competition.class';
         <app-product-item-list [products]="competition.products">
         </app-product-item-list>
   
-        <button mat-raised-button color="primary" class="more-info-btn" [routerLink]="['/competition', competition.id]">
-         Voir la compétition 
+        <button mat-raised-button class="more-info-btn" [routerLink]="['/competition', competition.id]">
+          <i class="material-icons">find_in_page</i>
+          Voir la compétition
         </button>
       </div>
   

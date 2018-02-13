@@ -4,14 +4,24 @@
 
     .welcome {
         width: 100%;
-        height: 50px;
         margin-top: 40px;
+        font-family: 'Kalam', cursive;
 
-        h2 {
+        h2, h3 {
             text-align: center;
         }
 
+        h3 {
+            font-weight: normal;
+        }
+
         // background-image: url('http://www.kinyu-z.net/data/wallpapers/86/1002470.jpg');
+    }
+
+    @media only screen and (max-device-width: $break-point){
+        .welcome h2 {
+            display: none;
+        }
     }
 
     .columns {

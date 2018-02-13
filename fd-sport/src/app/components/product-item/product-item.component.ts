@@ -7,6 +7,25 @@ import { Product } from '../../types/Product.class';
 
   <div class="product-item" [routerLink]="['/product', product.id]">
 
+    <img [src]="product.pictureLink">
+    
+    <div class="prices-reduc">
+      <div class="prices">
+        <div class="initial-price">
+          {{ product.price.initialPrice }} €
+        </div>
+        <div class="price">
+          {{ product.price.getReducedPrice() }} €
+        </div>
+      </div>
+
+      <div class="reduc">
+        {{ product.price.reduction * 100 }} %
+      </div>
+    </div>
+    
+  
+    <!--
     <div class="left">
       <div class="product-name" >
         {{ product.name}}  
@@ -22,6 +41,7 @@ import { Product } from '../../types/Product.class';
       </div>
     </div>
     <img [src]="product.pictureLink">
+    -->
 
   </div>
   `,

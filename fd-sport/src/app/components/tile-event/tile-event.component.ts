@@ -31,9 +31,10 @@ import * as _ from "lodash";
                            [products]="actor.products">
     </app-product-item-list>
 
-    <button mat-raised-button color="primary" class="more-info-btn" [routerLink]="['/event', event.id]">
-      Voir l'évenement  
-    </button>
+  <button mat-raised-button class="more-info-btn" [routerLink]="['/event', event.id]">
+    <i class="material-icons">find_in_page</i>
+    Voir l'évenement
+  </button>
 
   </div>
 

@@ -1,5 +1,6 @@
 mat-list {
     display: flex;
+    flex-direction: column;
 
     mat-list-item {
         padding: 0px;

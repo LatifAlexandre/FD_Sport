@@ -1,4 +1,4 @@
-
+@import '../../../styles-variable.scss';
 :host {
 
 
@@ -14,8 +14,11 @@
             display: flex;
             flex-direction: column;
             .title {
-                font-weight: bold;
                 font-size: 1.2em;
+            }
+            .date-place {
+                font-size: 1em;
+                color: grey;
             }
         }
     }
@@ -27,8 +30,8 @@
     }
 
     .more-info-btn {
-
-        width: 60%;
         margin: 20px;
+        background-color: $main-color;
+        color: white;
     }
 }

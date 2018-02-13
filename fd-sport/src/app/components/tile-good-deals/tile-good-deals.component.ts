@@ -24,9 +24,10 @@ import {} from './../../../../res/'
     
         <app-product-item-list [products]="goodDeals.products">
         </app-product-item-list>
-  
-        <button mat-raised-button color="primary" class="more-info-btn" routerLink="/good-deals">
-         Bonnes affaires
+        
+        <button mat-raised-button class="more-info-btn" routerLink="/good-deals">
+          <i class="material-icons">find_in_page</i>
+          Bonnes affaires
         </button>
       </div>
   
