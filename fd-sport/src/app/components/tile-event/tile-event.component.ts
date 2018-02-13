@@ -5,7 +5,7 @@ import * as _ from "lodash";
 @Component({
   selector: 'app-tile-event',
   template:`
-  <mat-expansion-panel expanded="true">
+  <mat-expansion-panel [expanded]="expanded">
 
   <mat-expansion-panel-header collapsedHeight="80px" expandedHeight="80px" >
 
@@ -46,6 +46,7 @@ import * as _ from "lodash";
 export class TileEventComponent implements OnInit {
 
   @Input() event: Event;
+  @Input() expanded: boolean = false;
 
   constructor() {
   }

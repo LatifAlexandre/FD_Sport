@@ -6,53 +6,68 @@ import { Ticket } from '../../types/Ticket.class';
 @Component({
   selector: 'app-ticket-page',
   template: `
-  <h2> <i class="material-icons">bookmark_border</i> {{ ticket.name }} </h2>
+  <div class="content">
   
-      <div class="picture-and-price">
-  
-        <img [src]="ticket.event.pictureLink" class="ticket-picture">
-  
-        <div class="right">
-          <div class="prices">
-            <div class="initial-price">
-              {{ ticket.price.initialPrice }} €
+        <h2> {{ ticket.name }} </h2>
+        
+        <div class="header">
+          <div class="picture-header">
+            <div class="reduction">
+              {{ ticket.price.reduction * 100 }} %
             </div>
-            <div class="price">
-              {{ ticket.price.getReducedPrice() }} €
+            <img [src]="ticket.event.pictureLink" style='height: 100%; width: 100%; object-fit: contain'/> 
+           
+          </div>
+        
+          <div class="info-header">
+            <div class="prices">
+              <div class="initialPrice">
+               {{ ticket.price.initialPrice }} €
+              </div>  
+              <div class="price">
+                {{ ticket.price.getReducedPrice() }} €
+              </div>
             </div>
+  
+            <div class="note">
+              <i class="material-icons">star_rate</i>
+              <i class="material-icons">star_rate</i>
+              <i class="material-icons">star_rate</i>
+              <i class="material-icons">star_rate</i>
+              <i class="material-icons">star_rate</i>
+            </div>
+      
+            <button mat-raised-button class="buy-btn"> 
+              <i class="material-icons">add_shopping_cart</i>
+              ajouter au panier
+            </button>
+  
           </div>
         </div>
+        
   
-      </div>
+        <div class="related-items">
+          <h3> Related items </h3> 
+          <app-ticket-item-list [tickets]="ticket.relatedTickets">
+          </app-ticket-item-list>
   
-      <div class="messages">
-        Il ne reste plus que {{ ticket.stock }} places ! <br>
-      </div>
+          <app-product-item-list [products]="ticket.relatedProducts">
+          </app-product-item-list>
+        </div>
   
-      <button mat-raised-button class="buy-btn"> 
-        <i class="material-icons">add_shopping_cart</i>
-        ajouter au panier </button>
-      <div class="description">
-        <h3>description</h3>
-        <p>
-          {{ ticket.description}}
-        </p>
-      </div>
+          
+        <div class="comments">
+          <h3> comments </h3>  
+        </div>
   
-      <h3> produits accociés </h3>
+        <div class="description">
+          <h3> description </h3> 
   
-      <app-product-item-list [products]="ticket.relatedProducts">
-      </app-product-item-list>
+          <p>
+            {{ product.description }}
+          </p>
+        </div>
   
-      <app-ticket-item-list [tickets]="ticket.relatedTickets">
-      </app-ticket-item-list>
-  
-      <div class="comments">
-        comentaires
-      </div>
-  
-      <div class="questions">
-        questions
       </div>
 
 `,

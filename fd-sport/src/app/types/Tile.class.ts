@@ -5,10 +5,10 @@ import { GoodDeals } from './GoodDeals.class';
 
 export class Tile {
     data: Competition | Event | Club | GoodDeals;
-    collapsed: boolean;
+    expanded: boolean;
 
-    constructor(data: Competition | Event | Club | GoodDeals, collapsed: boolean = true) {
+    constructor(data: Competition | Event | Club | GoodDeals, expanded: boolean = false) {
         this.data = data;
-        this.collapsed = collapsed
+        this.expanded = expanded; //Math.random() >= 0.5;
     }
 }

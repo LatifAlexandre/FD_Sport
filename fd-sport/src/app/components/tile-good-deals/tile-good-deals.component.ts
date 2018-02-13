@@ -5,7 +5,7 @@ import {} from './../../../../res/'
 @Component({
   selector: 'app-tile-good-deals',
   template:`
-  <mat-expansion-panel expanded="true">
+  <mat-expansion-panel [expanded]="expanded">
   
       <mat-expansion-panel-header collapsedHeight="80px" expandedHeight="80px" >
         <mat-panel-title>
@@ -38,7 +38,7 @@ import {} from './../../../../res/'
 export class TileGoodDealsComponent implements OnInit {
 
   @Input() goodDeals: GoodDeals;
-  
+  @Input() expanded: boolean = false;
 
   constructor() { }
 

@@ -4,7 +4,7 @@ import { Competition } from '../../types/Competition.class';
 @Component({
   selector: 'app-tile-competition',
   template: `
-    <mat-expansion-panel expanded="true">
+    <mat-expansion-panel [expanded]="expanded">
   
       <mat-expansion-panel-header collapsedHeight="80px" expandedHeight="80px" >
       <mat-panel-title>
@@ -42,10 +42,12 @@ import { Competition } from '../../types/Competition.class';
 export class TileCompetitionComponent implements OnInit {
 
   @Input() competition: Competition;
+  @Input() expanded: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

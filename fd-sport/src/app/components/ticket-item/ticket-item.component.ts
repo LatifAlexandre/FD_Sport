@@ -4,10 +4,9 @@ import { Ticket } from '../../types/Ticket.class';
 @Component({
   selector: 'app-ticket-item',
   template: `
-
   <div class="ticket" [routerLink]="['/ticket', ticket.id]">
   
-  <i class="material-icons">bookmark_border</i>
+  <img src="../../../assets/ticket-logo.png" class="ticket-icon">
   
   <div class="infos">
     <div class="name">
@@ -17,13 +16,7 @@ import { Ticket } from '../../types/Ticket.class';
     plus que {{ ticket.stock }} places <br>
     à partir de <span class="price"> {{ ticket.price.initialPrice }} € </span>
     </div>
-   
   </div>
-
-  <button mat-icon-button class="btn-eye">
-    <i class="material-icons">remove_red_eye</i>
-  </button>
-
   </div>
     
     

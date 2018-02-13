@@ -4,7 +4,7 @@ import { Club } from '../../types/Club.class';
 @Component({
   selector: 'app-tile-club',
   template:`
-  <mat-expansion-panel expanded="true">
+  <mat-expansion-panel [expanded]="expanded">
 
     <mat-expansion-panel-header collapsedHeight="80px" expandedHeight="80px" >
       <mat-panel-title>
@@ -41,7 +41,8 @@ import { Club } from '../../types/Club.class';
 export class TileClubComponent implements OnInit {
 
   @Input() club: Club;
-
+  @Input() expanded: boolean = false;
+  
   constructor() { }
 
   ngOnInit() {

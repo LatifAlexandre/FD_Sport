@@ -10,16 +10,16 @@ import { GoodDeals } from '../../types/GoodDeals.class';
   selector: 'app-tile',
   template: `
  
-    <app-tile-club *ngIf="isClub()" [club]="tile.data">
+    <app-tile-club [expanded]="tile.expanded" *ngIf="isClub()" [club]="tile.data">
     </app-tile-club>
 
-    <app-tile-competition *ngIf="isCompetition()" [competition]="tile.data">
+    <app-tile-competition [expanded]="tile.expanded" *ngIf="isCompetition()" [competition]="tile.data">
     </app-tile-competition>
 
-    <app-tile-event *ngIf="isEvent()" [event]="tile.data">
+    <app-tile-event [expanded]="tile.expanded" *ngIf="isEvent()" [event]="tile.data">
     </app-tile-event>
 
-    <app-tile-good-deals *ngIf="isGoodDeals()" [goodDeals]="tile.data">
+    <app-tile-good-deals [expanded]="tile.expanded" *ngIf="isGoodDeals()" [goodDeals]="tile.data">
     </app-tile-good-deals>
   `,
   styleUrls: ['./tile.component.scss']
@@ -31,6 +31,7 @@ export class TileComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.tile)
   }
 
   isClub() {
