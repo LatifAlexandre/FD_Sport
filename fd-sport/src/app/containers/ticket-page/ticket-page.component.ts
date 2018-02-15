@@ -8,24 +8,24 @@ import { Ticket } from '../../types/Ticket.class';
   template: `
   <div class="content">
   
-        <h2> {{ ticket.name }} </h2>
+        <h2> {{ ticket?.name }} </h2>
         
         <div class="header">
           <div class="picture-header">
             <div class="reduction">
-              {{ ticket.price.reduction * 100 }} %
+              {{ ticket?.price.reduction }} %
             </div>
-            <img [src]="ticket.event.pictureLink" style='height: 100%; width: 100%; object-fit: contain'/> 
+            <img [src]="ticket?.event?.pictureLink" style='height: 100%; width: 100%; object-fit: contain'/> 
            
           </div>
         
           <div class="info-header">
             <div class="prices">
               <div class="initialPrice">
-               {{ ticket.price.initialPrice }} €
+               {{ ticket?.price.initialPrice }} €
               </div>  
               <div class="price">
-                {{ ticket.price.getReducedPrice() }} €
+                {{ ticket?.price.getReducedPrice() }} €
               </div>
             </div>
   
@@ -48,10 +48,10 @@ import { Ticket } from '../../types/Ticket.class';
   
         <div class="related-items">
           <h3> Related items </h3> 
-          <app-ticket-item-list [tickets]="ticket.relatedTickets">
+          <app-ticket-item-list [tickets]="ticket?.relatedTickets">
           </app-ticket-item-list>
   
-          <app-product-item-list [products]="ticket.relatedProducts">
+          <app-product-item-list [products]="ticket?.relatedProducts">
           </app-product-item-list>
         </div>
   
@@ -64,7 +64,7 @@ import { Ticket } from '../../types/Ticket.class';
           <h3> description </h3> 
   
           <p>
-            {{ product.description }}
+            {{ ticket?.description }}
           </p>
         </div>
   
@@ -82,12 +82,15 @@ export class TicketPageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private sb: SandboxService) {
-    this.ticket = sb.getTicket(this.id);
   }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
        this.id = params['id'];
+       this.sb.getTicket(this.id).subscribe( value => {
+         this.ticket = Ticket.from(value);
+         console.log(this.ticket)
+       })
     });
   }
 

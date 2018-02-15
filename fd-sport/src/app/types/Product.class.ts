@@ -26,6 +26,19 @@ export class Product {
         this.relatedTickets = relatedTickets
     }
 
+    public static from(value): Product {
+        return new Product(
+            value.id,
+            value.name,
+            new Price(value.price, value.reduction),
+            value.stock,
+            value.description,
+            value.pictureLink,
+            value.relatedProducts ? value.relatedProducts.map( product => Product.from(product)) : undefined ,
+            value.relatedTickets  ? value.relatedTickets.map( ticket => Ticket.from(ticket)) : undefined 
+        )
+    }
+
     public static fake(withRelated = true): Product {
         if (withRelated) {
             return new Product('id', 

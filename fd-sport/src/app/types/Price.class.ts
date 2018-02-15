@@ -9,11 +9,11 @@ export class Price {
     }
 
     public static fake(): Price {
-        return new Price(100,0.2);
+        return new Price(100,20);
     }
 
     getReducedPrice() {
-        return this.initialPrice - this.initialPrice * this.reduction;
+        return this.initialPrice - this.initialPrice * this.reduction / 100;
     }
     
 }

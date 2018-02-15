@@ -50,7 +50,6 @@ export class ClubPageComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private sb: SandboxService) {
     this.club = this.sb.getClub(this. id);
-    console.log(this.club)
   }
 
   ngOnInit() {

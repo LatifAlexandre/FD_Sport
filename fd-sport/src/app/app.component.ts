@@ -7,7 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
       <app-header (clickOnMenuBtn)="onClickOnMenuBtn()">
       </app-header>
   
-      <mat-sidenav-container [style.marginTop.px]="headerHeight">
+      <mat-sidenav-container [style.paddingTop.px]="headerHeight">
         <mat-sidenav  [opened]="sideNavOpened"
                       (closedStart)="onSideNavCLosed()"
                       [style.marginTop.px]="headerHeight">

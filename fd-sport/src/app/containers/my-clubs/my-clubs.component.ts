@@ -22,7 +22,6 @@ export class MyClubsComponent implements OnInit {
       this.tiles.push(new Tile(club))
     })
 
-    console.log(this.tiles)
   }
 
   ngOnInit() {

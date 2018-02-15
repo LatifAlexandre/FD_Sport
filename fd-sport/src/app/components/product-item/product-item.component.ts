@@ -20,7 +20,7 @@ import { Product } from '../../types/Product.class';
       </div>
 
       <div class="reduc">
-        {{ product.price.reduction * 100 }} %
+        {{ product.price.reduction }} %
       </div>
     </div>
     
@@ -54,6 +54,7 @@ export class ProductItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.product)
   }
 
 }

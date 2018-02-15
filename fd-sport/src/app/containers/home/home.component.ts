@@ -5,6 +5,7 @@ import { Competition } from '../../types/Competition.class';
 import { GoodDeals } from '../../types/GoodDeals.class';
 import { Tile } from '../../types/Tile.class';
 import { SandboxService } from '../../services/sandbox.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-home',
@@ -23,8 +24,8 @@ import { SandboxService } from '../../services/sandbox.service';
         </app-tile-list>
       </div>
     </div>
-    
-    
+
+    {{ columns }}
   `,
   styleUrls: ['./home.component.scss']
 })
@@ -33,16 +34,35 @@ export class HomeComponent implements OnInit {
   columns: Tile[][] = [];
   columnNumber = 3;
   columnWidth = 1280 / this.columnNumber;
+  
 
   constructor(private sb: SandboxService) {
-    for (let i = 0; i < this.columnNumber; i++) {
-      this.columns.push(
-        this.sb.getMostRelevantTiles()
-      )
-    }
+
+    /*
+    this.tiles = this.sb.getMostRelevantTiles();
+    this.tiles.map( tile => {
+      let newTile = tile;
+      newTile.expanded = Math.random() >= 0.5;
+      return newTile;
+    })
+    */
+    this.sb.getMostRelevantEvents().subscribe( events => {
+      this.constructColumns( events.map( event => new Tile(Event.from(event))));
+    })
+
   }
 
   ngOnInit() {
+  }
+
+  constructColumns(tiles) {
+    
+    for(let i = 0; i < this.columnNumber; i++) {
+      this.columns.push([]);
+    }  
+    for (let i = 0; i < tiles.length; i++) {
+      this.columns[i % this.columnNumber].push(tiles[i]);
+    }
   }
 
 }

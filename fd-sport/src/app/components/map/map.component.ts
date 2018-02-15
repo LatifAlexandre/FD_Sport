@@ -29,7 +29,6 @@ export class MapComponent implements OnInit {
   
   ngOnInit() {
     this.src = `https://www.google.com/maps/embed/v1/place?key=${this.key}&q=${this.keywords}`
-    console.log(this.src)
   }
 
 }

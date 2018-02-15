@@ -10,11 +10,11 @@ import { Ticket } from '../../types/Ticket.class';
   
   <div class="infos">
     <div class="name">
-    {{ ticket.event.name }}
+    {{ ticket?.name }}
     </div>
     <div>
-    plus que {{ ticket.stock }} places <br>
-    à partir de <span class="price"> {{ ticket.price.initialPrice }} € </span>
+    plus que {{ ticket?.stock }} places <br>
+    à partir de <span class="price"> {{ ticket?.price?.initialPrice }} € </span>
     </div>
   </div>
   </div>

@@ -3,12 +3,28 @@ import { Product } from '../types/Product.class';
 import { Location } from '../types/Location.class';
 import * as _ from "lodash";
 
-export class Club extends Actor {
+export class Club  {
+
+    id: string;
+    name: string;
+
+    products: Product[];
+    events?: Event[];
+
+    pictureLink: string;
+
     location: Location;
     favorite: boolean;
 
     constructor(id, name, products, pictureLink, location, favorite,  events?) {
-        super(id, name, products, pictureLink, events);
+        
+        this.id = id;
+        this.name = name;
+        this.products = products;
+        this.pictureLink = pictureLink;
+        if (events)
+            this.events = events;
+
         this.location = location;
         this.favorite = favorite;
     }
