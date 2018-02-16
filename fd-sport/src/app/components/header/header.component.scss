@@ -29,11 +29,16 @@
                 }
             }
 
+            .welcome-msg {
+                font-style: italic;
+            }
+
             @media only screen and (max-device-width: $break-point){
                 .link-list, .search, .logo-left{
                     display: none;
                 }
             }
+
 
             @media only screen and (min-device-width: $break-point){
                 .btn-menu, .btn-search, .logo-right {

@@ -39,7 +39,7 @@ export class Event {
             value.description,
             undefined,
             value.pictureLink,
-            value.tickets ? value.tickets.map( ticket => Ticket.from(ticket)) : undefined
+            value.tickets ? value.tickets.map( ticketObject => Ticket.from(ticketObject)) : undefined
         )
     }
 

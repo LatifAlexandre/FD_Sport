@@ -1,4 +1,5 @@
-import { Component, OnInit,Output, EventEmitter } from '@angular/core';
+import { User } from './../../types/User.class';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sidenav-menu',
@@ -11,12 +12,7 @@ import { Component, OnInit,Output, EventEmitter } from '@angular/core';
         </a> 
       </mat-list-item>
 
-      <mat-list-item> 
-        <a mat-button (click)="onLinkClick()"routerLink="/my-clubs">
-          <i class="material-icons">account_box</i>
-          Mes Clubs
-        </a> 
-      </mat-list-item>
+      
 
       <mat-list-item>
         <a mat-button (click)="onLinkClick()"routerLink="/good-deals"> 
@@ -38,11 +34,27 @@ import { Component, OnInit,Output, EventEmitter } from '@angular/core';
           Rechercher 
         </a> 
       </mat-list-item>
+
+      <mat-list-item>
+        <button mat-raised-button color="primary" (click)="onLinkClick()" routerLink="/auth">
+          connexion   
+        </button>
+      </mat-list-item>
+
+      <mat-list-item *ngIf="userLogged"> 
+      <a mat-button (click)="onLinkClick()"routerLink="/my-clubs">
+        <i class="material-icons">account_box</i>
+        profile de {{userLogged?.username }} 
+      </a> 
+    </mat-list-item>
+      
     </mat-list>
   `,
   styleUrls: ['./sidenav-menu.component.scss']
 })
 export class SidenavMenuComponent implements OnInit {
+
+  @Input() userLogged: User;
 
   @Output() linkClicked: EventEmitter<any> = new EventEmitter();
 

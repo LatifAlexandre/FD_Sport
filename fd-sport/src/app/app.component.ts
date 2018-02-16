@@ -1,17 +1,21 @@
+import { Subject } from 'rxjs/Subject';
+import { SandboxService } from './services/sandbox.service';
+import { User } from './types/User.class';
 import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-root',
   template: `
-      <app-header (clickOnMenuBtn)="onClickOnMenuBtn()">
+      
+      <app-header (clickOnMenuBtn)="onClickOnMenuBtn()" [userLogged]="userLogged$ | async">
       </app-header>
-  
+
       <mat-sidenav-container [style.paddingTop.px]="headerHeight">
         <mat-sidenav  [opened]="sideNavOpened"
                       (closedStart)="onSideNavCLosed()"
                       [style.marginTop.px]="headerHeight">
-          <app-sidenav-menu (linkClicked)="onSideNavMenuLinkClicked()">
+          <app-sidenav-menu [userLogged]="userLogged$ | async"(linkClicked)="onSideNavMenuLinkClicked()">
           </app-sidenav-menu>
         </mat-sidenav>
         <mat-sidenav-content >
@@ -30,9 +34,13 @@ export class AppComponent implements AfterViewInit {
 
   sideNavOpened: boolean = false;
   headerHeight: number;
+  userLogged$: Subject<User>;
   
 
-  constructor() {}
+  constructor(private sb: SandboxService) {
+    this.userLogged$ = this.sb.getUserLogged();
+    
+  }
 
   ngAfterViewInit() {
     // the setTimeout is a workaround solution 

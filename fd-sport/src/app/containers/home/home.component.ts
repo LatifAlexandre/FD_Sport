@@ -21,6 +21,7 @@ import { Observable } from 'rxjs/Observable';
       <div *ngFor="let column of columns"
           [style.width.px]="columnWidth">
         <app-tile-list [tiles]="column">
+          Chargement en cours...
         </app-tile-list>
       </div>
     </div>
@@ -47,7 +48,7 @@ export class HomeComponent implements OnInit {
     })
     */
     this.sb.getMostRelevantEvents().subscribe( events => {
-      this.constructColumns( events.map( event => new Tile(Event.from(event))));
+      this.constructColumns( events.map( event => new Tile(Event.from(event), Math.random() >= 0.3)));
     })
 
   }

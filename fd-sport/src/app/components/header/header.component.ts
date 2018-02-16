@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { User } from './../../types/User.class';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -20,36 +21,35 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
       </button>
 
       <div class="link-list">
-        <a mat-button (click)="onLinkClick()"routerLink="."> 
+        <a mat-button routerLink="."> 
           <i class="material-icons">home</i>
-          Accueil
         </a>
 
-        <a mat-button (click)="onLinkClick()"routerLink="/my-clubs">
-          <i class="material-icons">account_box</i>
-          Mes Clubs
-        </a>
-
-        <a mat-button (click)="onLinkClick()"routerLink="/good-deals"> 
+        <a mat-button routerLink="/good-deals"> 
           <i class="material-icons">monetization_on</i>
-          Bonnes affaires 
         </a>
 
-        <a mat-button (click)="onLinkClick()"routerLink=".">
+        <a mat-button routerLink=".">
           <i class="material-icons">shopping_cart</i>
-          Mon panier 
         </a>
 
+        <button mat-raised-button color="primary"  routerLink="/auth">
+          Connexion
+        </button>
+
+        <a mat-button *ngIf="userLogged" routerLink="/my-clubs">
+        <i class="material-icons">account_box</i>
+        profile de {{userLogged?.username }} 
+      </a>
       </div>
-  
-  
+
       <!-- logo-right -->
       
       <span class="logo-right" routerLink="/"> 
         <i class="material-icons">explore</i>
-        FD Sport 
+        FD Sport
       </span>
-  
+
       <!-- search -->
   
       <button mat-icon-button class="btn-search" routerLink="/search">
@@ -72,6 +72,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  @Input() userLogged: User;
 
   @Output() clickOnMenuBtn: EventEmitter<any> = new EventEmitter();
 

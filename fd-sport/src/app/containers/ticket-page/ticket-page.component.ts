@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SandboxService } from '../../services/sandbox.service';
@@ -8,24 +9,24 @@ import { Ticket } from '../../types/Ticket.class';
   template: `
   <div class="content">
   
-        <h2> {{ ticket?.name }} </h2>
+        <h2> {{ (ticket$ | async)?.name }} </h2>
         
         <div class="header">
           <div class="picture-header">
             <div class="reduction">
-              {{ ticket?.price.reduction }} %
+              {{ (ticket$ | async)?.price.reduction }} %
             </div>
-            <img [src]="ticket?.event?.pictureLink" style='height: 100%; width: 100%; object-fit: contain'/> 
+            <img [src]="(ticket$ | async)?.event?.pictureLink" style='height: 100%; width: 100%; object-fit: contain'/> 
            
           </div>
         
           <div class="info-header">
             <div class="prices">
               <div class="initialPrice">
-               {{ ticket?.price.initialPrice }} €
+               {{ (ticket$ | async)?.price.initialPrice }} €
               </div>  
               <div class="price">
-                {{ ticket?.price.getReducedPrice() }} €
+                {{ (ticket$ | async)?.price.getReducedPrice() }} €
               </div>
             </div>
   
@@ -48,10 +49,10 @@ import { Ticket } from '../../types/Ticket.class';
   
         <div class="related-items">
           <h3> Related items </h3> 
-          <app-ticket-item-list [tickets]="ticket?.relatedTickets">
+          <app-ticket-item-list [tickets]="(ticket$ | async)?.relatedTickets">
           </app-ticket-item-list>
   
-          <app-product-item-list [products]="ticket?.relatedProducts">
+          <app-product-item-list [products]="(ticket$ | async)?.relatedProducts">
           </app-product-item-list>
         </div>
   
@@ -64,7 +65,7 @@ import { Ticket } from '../../types/Ticket.class';
           <h3> description </h3> 
   
           <p>
-            {{ ticket?.description }}
+            {{ (ticket$ | async)?.description }}
           </p>
         </div>
   
@@ -78,7 +79,7 @@ export class TicketPageComponent implements OnInit {
   id: string;
   private sub: any;
 
-  ticket: Ticket;
+  ticket$: Observable<Ticket>;
 
   constructor(private route: ActivatedRoute,
               private sb: SandboxService) {
@@ -87,10 +88,7 @@ export class TicketPageComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
        this.id = params['id'];
-       this.sb.getTicket(this.id).subscribe( value => {
-         this.ticket = Ticket.from(value);
-         console.log(this.ticket)
-       })
+       this.ticket$ = this.sb.getTicket(this.id);
     });
   }
 

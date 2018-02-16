@@ -44,16 +44,18 @@ import { TileClubComponent } from './components/tile-club/tile-club.component';
 import { TileCompetitionComponent } from './components/tile-competition/tile-competition.component';
 import { SidenavMenuComponent } from './components/sidenav-menu/sidenav-menu.component';
 import { TileGoodDealsComponent } from './components/tile-good-deals/tile-good-deals.component';
+import { TicketItemListComponent } from './components/ticket-item-list/ticket-item-list.component';
+import { MapComponent } from './components/map/map.component';
+import { TileComponent } from './components/tile/tile.component';
+import { TileListComponent } from './components/tile-list/tile-list.component';
 
 // my services
 import { SandboxService } from './services/sandbox.service';
 import { EventPageComponent } from './containers/event-page/event-page.component';
 import { CompetitionPageComponent } from './containers/competition-page/competition-page.component';
 import { ClubPageComponent } from './containers/club-page/club-page.component';
-import { TicketItemListComponent } from './components/ticket-item-list/ticket-item-list.component';
-import { MapComponent } from './components/map/map.component';
-import { TileComponent } from './components/tile/tile.component';
-import { TileListComponent } from './components/tile-list/tile-list.component';
+import { AuthComponent } from './containers/auth/auth.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -70,7 +72,8 @@ const appRoutes: Routes = [
   { path: 'event/:id', component: EventPageComponent },
   { path: 'competition/:id', component: CompetitionPageComponent },
   { path: 'club/:id', component: ClubPageComponent },
-  { path: 'good-deals', component: GoodDealsPageComponent }
+  { path: 'good-deals', component: GoodDealsPageComponent },
+  { path: 'auth', component: AuthComponent }
 ];
 
 @NgModule({
@@ -100,6 +103,8 @@ const appRoutes: Routes = [
     MapComponent,
     TileComponent,
     TileListComponent,
+    AuthComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
+import { Product } from './Product.class';
 import { Actor } from '../types/Actor.class'
-import { Product } from '../types/Product.class';
+import { Event } from '../types/Event.class';
 import { Location } from '../types/Location.class';
 import * as _ from "lodash";
 
@@ -27,6 +28,19 @@ export class Club  {
 
         this.location = location;
         this.favorite = favorite;
+    }
+
+    public static from(value) {
+        console.log(value)
+        return new Club(
+            value.id,
+            value.name,
+            value.products ? value.products.map( prodObj => Product.from(prodObj)) : undefined,
+            value.pictureLink,
+            new Location(0, value.locationName, value.longitude, value.latitude),
+            false,
+            value.events ? value.events.map( eventObj => Event.from(eventObj)) : undefined
+        )
     }
 
     public static fake(): Club {

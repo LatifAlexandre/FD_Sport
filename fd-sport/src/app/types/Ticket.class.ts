@@ -30,6 +30,7 @@ export class Ticket {
 
     public static from(value): Ticket {
 
+
         return new Ticket(
             value.id,
             value.name,

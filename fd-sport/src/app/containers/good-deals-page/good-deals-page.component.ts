@@ -11,17 +11,17 @@ import { Product } from '../../types/Product.class';
 
     <div class="content">
         <h2> Bonnes affaires </h2>
-    
+
         <h3> Les tickets pour les évènements </h3>
           
-        <app-ticket-item-list [tickets]="goodDeals?.tickets">
+        <app-ticket-item-list [tickets]="(goodDeals$ | async)?.tickets">
         </app-ticket-item-list>
     
         <h3> Les produits </h3>
     
-        <app-product-item-list [products]="goodDeals?.products">
+        <app-product-item-list [products]="(goodDeals$ | async)?.products">
         </app-product-item-list>
-
+        
     </div>
 
   `,
@@ -29,19 +29,12 @@ import { Product } from '../../types/Product.class';
 })
 export class GoodDealsPageComponent implements OnInit, OnDestroy {
 
-  goodDeals: GoodDeals;
+  goodDeals$: Observable<GoodDeals>;
   tickets: any;
 
   constructor(private sb: SandboxService) {
     
-    this.sb.getGoodDeals().subscribe( ([ticketsObject, productsObject]) => {
-      let tickets: Ticket[] = ticketsObject.map( ticket => Ticket.from(ticket));
-      let products: Ticket[] = productsObject.map( product => Product.from(product));
-
-      this.goodDeals = new GoodDeals(tickets, products);
-      
-    })
-
+    this.goodDeals$ = this.sb.getGoodDeals();
   }
     
 

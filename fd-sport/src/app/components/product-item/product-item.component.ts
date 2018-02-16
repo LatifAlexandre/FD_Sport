@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../../types/Product.class';
-
 @Component({
   selector: 'app-product-item',
-  template:`
+  template: `
 
   <div class="product-item" [routerLink]="['/product', product.id]">
 
@@ -54,7 +53,6 @@ export class ProductItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.product)
   }
 
 }
