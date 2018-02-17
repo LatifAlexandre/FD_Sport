@@ -39,18 +39,9 @@ export class HomeComponent implements OnInit {
 
   constructor(private sb: SandboxService) {
 
-    /*
-    this.tiles = this.sb.getMostRelevantTiles();
-    this.tiles.map( tile => {
-      let newTile = tile;
-      newTile.expanded = Math.random() >= 0.5;
-      return newTile;
-    })
-    */
-    this.sb.getMostRelevantEvents().subscribe( events => {
-      this.constructColumns( events.map( event => new Tile(Event.from(event), Math.random() >= 0.3)));
-    })
-
+    this.sb.getMostReleventTiles().subscribe( tiles => {
+      this.constructColumns(tiles);
+    })    
   }
 
   ngOnInit() {

@@ -9,7 +9,6 @@ import { GoodDeals } from '../../types/GoodDeals.class';
 @Component({
   selector: 'app-tile',
   template: `
- 
     <app-tile-club [expanded]="tile.expanded" *ngIf="isClub()" [club]="tile.data">
     </app-tile-club>
 

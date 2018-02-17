@@ -25,6 +25,18 @@ export class Competition {
         this.pictureLink = pictureLink;
     }
 
+    public static from( value ) {
+        return new Competition(
+            value.id,
+            value.name,
+            value.startDate,
+            value.endDate,
+            value.products ? value.products.map( prodObj => Product.from(prodObj)) : undefined,
+            value.events ? value.events.map( eventObj => Event.from(eventObj)) : undefined,
+            value.pictureLink
+        )
+    }
+
     public static fake(): Competition {
 
         return new Competition('id', 

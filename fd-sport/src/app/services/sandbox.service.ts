@@ -1,9 +1,9 @@
+import { Competition } from './../types/Competition.class';
 import { GoodDeals } from './../types/GoodDeals.class';
 import { Injectable } from '@angular/core';
 import { Event } from '../types/Event.class';
 import { Product } from '../types/Product.class';
 import { Club } from '../types/Club.class';
-import { Competition } from '../types/Competition.class';
 import { Ticket } from '../types/Ticket.class';
 import { Tile } from '../types/Tile.class';
 import { User } from '../types/User.class';
@@ -23,6 +23,7 @@ export class SandboxService {
 
   lat: number;
   lon: number;
+  
 
   constructor(private http: HttpClient) {
     this.userLogged$.subscribe( val => {
@@ -30,8 +31,8 @@ export class SandboxService {
     });
 
     navigator.geolocation.getCurrentPosition((position) => { 
-      this.lat = position.coords.latitude; 
-      this.lon = position.coords.longitude;
+        this.lat = position.coords.latitude,
+        this.lon = position.coords.longitude
      });
   }
 
@@ -80,18 +81,55 @@ export class SandboxService {
         })
   }
 
-  public getMostRelevantEvents() {
-    /*
-    return [
-      new Tile(Competition.fake()),
-      new Tile(Event.fake()),
-      new Tile(Club.fake()),
-      new Tile(Competition.fake()),
-      new Tile(Club.fake()),
-      new Tile(Event.fake()),
-      new Tile(GoodDeals.fake())
-    ]*/
-    return this.getAllEvents();
+
+  
+
+  getMostRelevantEvents() {
+    // url construtcion
+    let url: string = 'https://pedago02a.univ-avignon.fr/~uapv1404039/git/server/api/event/read/getRelevant.php?';
+    if (this.userLogged) {
+      url += `userId=${this.userLogged.id}`
+    }
+    if (this.userLogged && this.lat && this.lon) {
+      url += `&`
+    }
+    if (this.lat && this.lon) {
+      url += `lon=${this.lon}&lat=${this.lat}`;
+    }
+    return this.http.get<any[]>(url).map( eventsObj => eventsObj.map( eventObj => Event.from(eventObj)));
+  }
+
+  getMostRelevantClubs(): Observable<Club[]> {
+    // url construtcion
+    let url: string = 'https://pedago02a.univ-avignon.fr/~uapv1404039/git/server/api/actor/read/getRelevant.php?';
+    if (this.lat && this.lon) {
+      url += `&lon=${this.lon}&lat=${this.lat}`;
+    }
+    console.log(url)
+    return this.http.get<any[]>(url).map( clubsObj => clubsObj.map( clubObj => Club.from(clubObj)));
+  }
+
+  getMostRelevantCompetitions(): Observable<Competition[]> {
+    // url construtcion
+    let url: string = 'https://pedago02a.univ-avignon.fr/~uapv1404039/git/server/api/competition/read/getRelevant.php?';
+    if (this.lat && this.lon) {
+      url += `&lon=${this.lon}&lat=${this.lat}`;
+    }
+    console.log(url)
+    return this.http.get<any[]>(url).map( compsObj => compsObj.map( compObj => Competition.from(compObj)));
+  }
+
+  
+  public getMostReleventTiles(): Observable<Tile[]> {
+   return Observable.combineLatest(this.getMostRelevantEvents(), 
+                                   this.getMostRelevantClubs(),
+                                   this.getMostRelevantCompetitions())
+          .map( ([events, clubs, competitions]) => {
+      let tileEvents = events.map( event =>new Tile(event));
+      let tileClubs = clubs.map( club =>new Tile(club));
+      let tileCompetitions = competitions.map( competition =>new Tile(competition));
+      return [...tileEvents, ...tileClubs, ...tileCompetitions];
+   })
   }
   
   public login(user: User) {
@@ -103,9 +141,11 @@ export class SandboxService {
   }
 
   getPosition() {
-    return { 'lat': this.lat,
-             'lon': this.lon
-           }
+    
+    return {
+      lat: this.lat,
+      lon: this.lon
+    };
   }
 
 
