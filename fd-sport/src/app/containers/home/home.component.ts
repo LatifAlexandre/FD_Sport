@@ -1,3 +1,4 @@
+import { Interest } from './../../types/Interest.class';
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../../types/Event.class';
 import { Club } from '../../types/Club.class';
@@ -6,6 +7,7 @@ import { GoodDeals } from '../../types/GoodDeals.class';
 import { Tile } from '../../types/Tile.class';
 import { SandboxService } from '../../services/sandbox.service';
 import { Observable } from 'rxjs/Observable';
+import  'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-home',
@@ -35,13 +37,19 @@ export class HomeComponent implements OnInit {
   columns: Tile[][] = [];
   columnNumber = 3;
   columnWidth = 1280 / this.columnNumber;
-  
 
   constructor(private sb: SandboxService) {
-
+    /*
+    setTimeout( () => {
+      this.sb.getMostReleventTiles().subscribe( tiles => {
+        this.constructColumns(tiles);
+      })   
+    }, 100)
+    */
     this.sb.getMostReleventTiles().subscribe( tiles => {
       this.constructColumns(tiles);
-    })    
+    })   
+    
   }
 
   ngOnInit() {

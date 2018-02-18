@@ -25,6 +25,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 //external modules
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+import { StarRatingModule } from 'angular-star-rating';
 
 // my containers
 import { HomeComponent } from './containers/home/home.component';
@@ -56,6 +57,8 @@ import { CompetitionPageComponent } from './containers/competition-page/competit
 import { ClubPageComponent } from './containers/club-page/club-page.component';
 import { AuthComponent } from './containers/auth/auth.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TileInterestComponent } from './components/tile-interest/tile-interest.component';
+import { PofilingBoxComponent } from './components/pofiling-box/pofiling-box.component';
 
 
 
@@ -105,6 +108,8 @@ const appRoutes: Routes = [
     TileListComponent,
     AuthComponent,
     FooterComponent,
+    TileInterestComponent,
+    PofilingBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -128,6 +133,8 @@ const appRoutes: Routes = [
     MatNativeDateModule,
     // exeternal modules
     Ng2CarouselamosModule,
+    StarRatingModule.forRoot()
+    
   ],
   providers: [ SandboxService ],
   bootstrap: [AppComponent]

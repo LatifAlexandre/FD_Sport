@@ -13,7 +13,7 @@
 
     .prices-reduc {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         .prices {
             .initial-price {
@@ -28,13 +28,6 @@
             }
         }
 
-        .reduc {
-            font-size: 1.4em;
-        }
-
-        .reduc {
-
-        }
     }
 }
 

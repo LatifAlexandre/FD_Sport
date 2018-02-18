@@ -27,13 +27,15 @@
             img {
                 max-width: 100%;
             }
+
             .reduction {
+                transform: rotate(-45deg);
                 position: absolute;
                 margin: 15px;
                 font-size: 5em;
                 font-weight: bold;
-                text-shadow: 0px 0px 5px black;
-                color: rgb(255, 115, 0);
+                text-shadow: 0px 0px 5px silver;
+                color: rgb(0, 179, 36);
             }
         }
         
@@ -47,29 +49,49 @@
 
             .prices {
                 display: flex;
-                .initialPrice {
-                    text-decoration: line-through;
-                    color: red;
-                    font-size: 2em;
-                }
+                justify-content: center;
+                width: 300px;
+
                 .price {
-                    color: green;
+                    color: rgb(44, 228, 44);
                     font-size: 3em;
                     font-weight: bold;
+                    margin: 10px;
+                    text-shadow: 0px 0px 3px silver;
+                }
+                .initialPrice {
+                    text-decoration: line-through;
+                    color: rgb(233, 76, 76);
+                    font-size: 2em;
+                    margin: 10px;
+                    text-shadow: 0px 0px 3px silver;
                 }
             }
 
             .note {
                 display: flex;
                 justify-content: flex-start;
-                width: 200px;
                 i {
                     width: 30px;
+                    color: rgb(187, 187, 11);
+                }
+                margin: 20px;
+            }
+
+            .labels{
+                display: flex;
+                width: 80%;
+                justify-content: space-around;
+                .label {
+                    width: 80px;
+                    height: 80px;
+                    margin: 10px;
                 }
             }
     
             .buy-btn {
                 width: 80%;
+                max-width: 300px;
                 color: white;
                 background-color: green;
             }

@@ -31,7 +31,6 @@ export class Club  {
     }
 
     public static from(value) {
-        console.log(value)
         return new Club(
             value.id,
             value.name,

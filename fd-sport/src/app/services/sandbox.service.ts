@@ -1,3 +1,5 @@
+import { Profile } from './../types/Profile.class';
+import { Interest } from './../types/Interest.class';
 import { Competition } from './../types/Competition.class';
 import { GoodDeals } from './../types/GoodDeals.class';
 import { Injectable } from '@angular/core';
@@ -33,6 +35,7 @@ export class SandboxService {
     navigator.geolocation.getCurrentPosition((position) => { 
         this.lat = position.coords.latitude,
         this.lon = position.coords.longitude
+        console.log(this.lat, this.lon)
      });
   }
 
@@ -55,6 +58,31 @@ export class SandboxService {
       let tickets: Ticket[] = ticketsObject.map( ticket => Ticket.from(ticket));
       let products: Ticket[] = productsObject.map( product => Product.from(product));
       return new GoodDeals(tickets, products);
+    })
+  }
+  
+
+  public getInteresting(): Observable<Interest> {
+
+    let urlTicket: string = `https://pedago02a.univ-avignon.fr/~uapv1404039/git/server/api/ticket/read/getInteresting.php?`
+    let urlProduct: string = `https://pedago02a.univ-avignon.fr/~uapv1404039/git/server/api/product/read//getInteresting.php?`
+
+    if (this.userLogged) {
+      urlTicket += `userId=${this.userLogged.id}`
+      urlProduct += `userId=${this.userLogged.id}`
+    }
+
+    console.log(urlTicket)
+    console.log(urlProduct)
+    
+    return Observable.combineLatest(
+      this.http.get<any[]>(urlTicket),
+      this.http.get<any[]>(urlProduct)
+    )
+    .map( ([ticketsObject, productsObject]) => {
+      let tickets: Ticket[] = ticketsObject.map( ticket => Ticket.from(ticket));
+      let products: Ticket[] = productsObject.map( product => Product.from(product));
+      return new Interest(tickets, products);
     })
   }
 
@@ -80,9 +108,6 @@ export class SandboxService {
           return userObjects.map( userObj => User.from(userObj))
         })
   }
-
-
-  
 
   getMostRelevantEvents() {
     // url construtcion
@@ -115,7 +140,6 @@ export class SandboxService {
     if (this.lat && this.lon) {
       url += `&lon=${this.lon}&lat=${this.lat}`;
     }
-    console.log(url)
     return this.http.get<any[]>(url).map( compsObj => compsObj.map( compObj => Competition.from(compObj)));
   }
 
@@ -123,15 +147,32 @@ export class SandboxService {
   public getMostReleventTiles(): Observable<Tile[]> {
    return Observable.combineLatest(this.getMostRelevantEvents(), 
                                    this.getMostRelevantClubs(),
-                                   this.getMostRelevantCompetitions())
-          .map( ([events, clubs, competitions]) => {
+                                   this.getMostRelevantCompetitions(),
+                                   this.getGoodDeals(),
+                                   this.getInteresting())
+          .map( ([events, clubs, competitions, goodDeals, interest]) => {
       let tileEvents = events.map( event =>new Tile(event));
       let tileClubs = clubs.map( club =>new Tile(club));
       let tileCompetitions = competitions.map( competition =>new Tile(competition));
-      return [...tileEvents, ...tileClubs, ...tileCompetitions];
+      let tileGoodDeals = new Tile(goodDeals);
+      let tileInterest = new Tile(interest);
+      
+      let arrayOfTiles: Tile[] = [tileGoodDeals, tileInterest, ...tileEvents, ...tileClubs, ...tileCompetitions];
+      return this.shuffle(arrayOfTiles.map(tile => tile.getTile(Math.random() > 0.5)));
    })
   }
-  
+
+  getProductProfile(id): Observable<Profile> {
+    let url =  'https://pedago02a.univ-avignon.fr/~uapv1404039/git/server/api/axes/read/getAxesByProductId.php?id='+id;
+    return this.http.get<any[]>(url).map( value => Profile.from(value));
+  }
+
+  getTicketProfile(id): Observable<Profile> {
+    let url =  'https://pedago02a.univ-avignon.fr/~uapv1404039/git/server/api/axes/read/getAxesByTicketId.php?id='+id;
+    return this.http.get<any[]>(url).map( value => Profile.from(value));
+  }
+
+
   public login(user: User) {
     this.userLogged$.next(user);
   }
@@ -147,6 +188,14 @@ export class SandboxService {
       lon: this.lon
     };
   }
+
+  shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
 
 
   

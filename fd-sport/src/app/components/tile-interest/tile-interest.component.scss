@@ -1,0 +1,31 @@
+@import '../../../styles-variable.scss';
+
+:host {
+    
+        mat-panel-title {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+    
+            .header-picture{
+                width: 60px;
+                height: 50px;
+            }
+    
+            .title {
+                font-size: 1.2em;
+            }
+        }
+    
+        .panel-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .more-info-btn {
+            margin: 20px;
+            background-color: $main-color;
+            color: white;
+        }
+    }

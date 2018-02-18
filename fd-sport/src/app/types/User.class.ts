@@ -7,7 +7,6 @@ export class User {
     favoriteClubs: Club[];
 
     public static from( value ) {
-        console.log(value)
         return new User(
             value.id,
             value.username,

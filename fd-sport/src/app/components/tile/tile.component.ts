@@ -1,3 +1,4 @@
+import { Interest } from './../../types/Interest.class';
 import { Component, OnInit, Input } from '@angular/core';
 import { Tile } from '../../types/Tile.class';
 
@@ -10,16 +11,24 @@ import { GoodDeals } from '../../types/GoodDeals.class';
   selector: 'app-tile',
   template: `
     <app-tile-club [expanded]="tile.expanded" *ngIf="isClub()" [club]="tile.data">
+      chargement...
     </app-tile-club>
 
     <app-tile-competition [expanded]="tile.expanded" *ngIf="isCompetition()" [competition]="tile.data">
+      chargement...  
     </app-tile-competition>
 
     <app-tile-event [expanded]="tile.expanded" *ngIf="isEvent()" [event]="tile.data">
+      chargement...  
     </app-tile-event>
 
     <app-tile-good-deals [expanded]="tile.expanded" *ngIf="isGoodDeals()" [goodDeals]="tile.data">
+      chargement...
     </app-tile-good-deals>
+
+    <app-tile-interest [expanded]="tile.expanded" *ngIf="isInterest()" [interest]="tile.data">
+      chargement...
+    </app-tile-interest>
   `,
   styleUrls: ['./tile.component.scss']
 })
@@ -43,6 +52,9 @@ export class TileComponent implements OnInit {
   }
   isGoodDeals() {
     return this.tile.data instanceof GoodDeals
+  }
+  isInterest() {
+    return this.tile.data instanceof Interest
   }
 
 }

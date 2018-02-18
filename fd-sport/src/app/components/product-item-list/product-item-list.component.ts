@@ -26,12 +26,14 @@ import { Product } from '../../types/Product.class';
 
     <ng-template #item let-item let-i="index">
       <app-product-item [product]="item">
+      chargement...
       </app-product-item>
     </ng-template>
     -->
 
     <app-product-item *ngFor="let product of products"
                        [product]="product">
+                       chargement...
     </app-product-item>
   `,
   styleUrls: ['./product-item-list.component.scss']

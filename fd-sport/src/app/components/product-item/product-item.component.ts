@@ -10,16 +10,12 @@ import { Product } from '../../types/Product.class';
     
     <div class="prices-reduc">
       <div class="prices">
-        <div class="initial-price">
+        <div class="initial-price" *ngIf="product.price.reduction != 0">
           {{ product.price.initialPrice }} €
         </div>
         <div class="price">
           {{ product.price.getReducedPrice() }} €
         </div>
-      </div>
-
-      <div class="reduc">
-        {{ product.price.reduction }} %
       </div>
     </div>
   </div>
